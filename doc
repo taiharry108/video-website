@@ -1,0 +1,6 @@
+ng new video-website
+ng add @angular/material
+ng add @angular/fire
+ng add @angular/material
+ng add @ngrx/store
+npm i -s @angular/flex-layout @angular/cdk
