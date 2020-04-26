@@ -4,17 +4,22 @@
       <mat-icon>menu</mat-icon>
     </button>
   </div>
-  <div><a routerLink="/">Video</a></div>
+  <div fxFlex fxLayout fxLayoutAlign="flex-start">
+    <a routerLink="/">Video</a>
+  </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li>
+      <li [fxHide]="searchBarIsFocused">
         <a routerLink="/signup">Signup</a>
       </li>
-      <li>
+      <li [fxHide]="searchBarIsFocused">
         <a routerLink="/login">Login</a>
       </li>
-      <li>
+      <li [fxHide]="searchBarIsFocused">
         <a style="cursor: pointer;">Logout</a>
+      </li>
+      <li>
+        <app-search-bar (onFocus)="searchBarOnFocus()" (onBlur)="searchBarOnBlur()"></app-search-bar>
       </li>
     </ul>
   </div>
