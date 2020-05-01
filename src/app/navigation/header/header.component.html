@@ -9,17 +9,17 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li [fxHide]="searchBarIsFocused">
+      <li [fxHide]="searchBar.searchVisible">
         <a routerLink="/signup">Signup</a>
       </li>
-      <li [fxHide]="searchBarIsFocused">
+      <li [fxHide]="searchBar.searchVisible">
         <a routerLink="/login">Login</a>
       </li>
-      <li [fxHide]="searchBarIsFocused">
+      <li [fxHide]="searchBar.searchVisible">
         <a style="cursor: pointer;">Logout</a>
       </li>
       <li>
-        <app-search-bar (onFocus)="searchBarOnFocus()" (onBlur)="searchBarOnBlur()"></app-search-bar>
+        <app-search-bar #searchBar (onEnter)="searchBarOnEnter($event)"></app-search-bar>
       </li>
     </ul>
   </div>

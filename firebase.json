@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "video-website",
+      "public": "dist/video-website",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

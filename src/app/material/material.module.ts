@@ -7,7 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormsModule } from '@angular/forms';
+import { MatTabsModule } from '@angular/material/tabs';
+import { OverlayModule } from '@angular/cdk/overlay';
 
 const modules = [
   MatSidenavModule,
@@ -18,7 +19,8 @@ const modules = [
   MatFormFieldModule,
   MatInputModule,
   MatAutocompleteModule,
-  FormsModule
+  MatTabsModule,
+  OverlayModule
 ];
 
 @NgModule({

@@ -1,26 +1,11 @@
-<section
-  class="shows-container"
-  fxLayout="row wrap"
-  fxLayoutAlign="center"
->
-  <div  *ngFor="let show of latestShows$ | async">
-    <mat-card class="example-card">
-      <img mat-card-image class="show-thum" [src]="show.thumImgUrl" />
-      <mat-card-content>
-        <mat-card-title>{{ show.name }}</mat-card-title>
-        <mat-card-subtitle
-          >Total number of eps: {{ show.numEps }}<br />
-          Total number of seasons: {{ show.numSeasons }}</mat-card-subtitle
-        >
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-icon-button color="accent">
-          <mat-icon>thumb_up</mat-icon>
-        </button>
-        <button mat-icon-button color="primary">
-          <mat-icon>share</mat-icon>
-        </button>
-      </mat-card-actions>
-    </mat-card>
-  </div>
-</section>
+<!-- <mat-tab-group [selectedIndex]="selectedIndex" [dynamicHeight]="true">
+  <mat-tab *ngIf="latestShows$ | async as shows" label="Featured Shows"
+    ><app-show-list [shows]="shows"></app-show-list
+  ></mat-tab>
+  <mat-tab
+    *ngIf="filteredShows$ | async as shows"
+    label="Search Result"
+    ><app-show-list [shows]="shows"></app-show-list
+  ></mat-tab>
+</mat-tab-group> -->
+<app-vjs-player [options]="{ autoplay: true, controls: true, sources: [{ src: 'assets/test.mp4', type: 'video/mp4' }]}"></app-vjs-player>

@@ -1,0 +1,10 @@
+@import "~video.js/dist/video-js.css";
+
+.video-container {
+  display: flex;
+  justify-content: center;
+}
+
+.video-inner-container {
+  position: relative;
+}

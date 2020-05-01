@@ -4,3 +4,4 @@ ng add @angular/fire
 ng add @angular/material
 ng add @ngrx/store
 npm i -s @angular/flex-layout @angular/cdk
+npm install --save firebase

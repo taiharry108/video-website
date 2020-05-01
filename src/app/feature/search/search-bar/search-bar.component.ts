@@ -18,7 +18,7 @@ import {
 import { FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatAutocomplete } from '@angular/material/autocomplete';
 
-import { AbstractControlValueAccessor } from '../util/abstract-value-accessor';
+import { AbstractControlValueAccessor } from '../../util/abstract-value-accessor';
 
 export enum DISPLAY_TYPE {
   SIMPLE,

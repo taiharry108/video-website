@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "video-player-74430": {
+      "hosting": {
+        "video-website": [
+          "video-player-74430"
+        ]
+      }
+    }
+  }
+}

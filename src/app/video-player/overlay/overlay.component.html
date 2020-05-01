@@ -1,0 +1,8 @@
+<div class="overlay-container">
+  <div class="icon-container" [@inAndOut]="isIn ? 'in' : 'out'">
+    <mat-icon class="icon">pause</mat-icon>
+  </div>
+  <div class="icon-container" [@inAndOut]="(isIn == false) ? 'in' : 'out'">
+    <mat-icon class="icon">play_arrow</mat-icon>
+  </div>
+</div>

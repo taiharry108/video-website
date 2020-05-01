@@ -1,177 +1,27 @@
-import { VideoActions, START_LOADING, STOP_LOADING, SET_AVAILABLE_SHOWS } from './video.actions';
+import {
+  VideoActions,
+  START_LOADING,
+  STOP_LOADING,
+  SET_LATEST_SHOWS,
+  SET_FILTERED_SHOWS,
+  TOGGLE_PLAY,
+  START_PLAYING,
+  STOP_PLAYING
+} from './video.actions';
 import { Show } from './show.model';
 
 export interface State {
   isLoading: boolean;
   latestShows: Show[];
+  filteredShows: Show[];
+  isPlaying: boolean;
 }
 
 const initialState: State = {
   isLoading: false,
-  latestShows: [
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '銀魂',
-    //   id: '1',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/gintama.jpg',
-    //   state: 'finished',
-    // },
-    // {
-    //   lastUpdate: new Date(),
-    //   name: '鬼滅',
-    //   id: '2',
-    //   numSeasons: 1,
-    //   numEps: 10,
-    //   thumImgUrl: 'assets/kitsume-no-yaiba.jpg',
-    //   state: 'finished',
-    // },
-  ],
+  latestShows: [],
+  filteredShows: [],
+  isPlaying: null,
 };
 
 export function videoReducer(
@@ -189,11 +39,31 @@ export function videoReducer(
         ...state,
         isLoading: false,
       };
-    case SET_AVAILABLE_SHOWS:
+    case SET_LATEST_SHOWS:
       return {
         ...state,
-        latestShows: action.payload
-      }
+        latestShows: action.payload,
+      };
+    case SET_FILTERED_SHOWS:
+      return {
+        ...state,
+        filteredShows: action.payload,
+      };
+    case TOGGLE_PLAY:
+      return {
+        ...state,
+        isPlaying: !state.isPlaying,
+      };
+    case START_PLAYING:
+      return {
+        ...state,
+        isPlaying: true,
+      };
+    case STOP_PLAYING:
+      return {
+        ...state,
+        isPlaying: false,
+      };
     default:
       return state;
   }
@@ -201,3 +71,5 @@ export function videoReducer(
 
 export const getIsLoading = (state: State) => state.isLoading;
 export const getLatestShows = (state: State) => state.latestShows;
+export const getFilteredShows = (state: State) => state.filteredShows;
+export const getIsPlaying = (state: State) => state.isPlaying;

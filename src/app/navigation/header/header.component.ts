@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SearchService } from '../../feature/search/search.service';
 
 @Component({
   selector: 'app-header',
@@ -6,20 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent implements OnInit {
-  searchBarIsFocused: boolean;
-  constructor() {}
+  constructor(private searchService: SearchService) {}
 
   ngOnInit(): void {
-    this.searchBarIsFocused = false;
+    
   }
 
   onToggleSidenav(): void {}
 
-  searchBarOnFocus(): void {
-    this.searchBarIsFocused = true;
+  searchBarOnEnter(searchValue: string) {
+    this.searchService.searchShow(searchValue);
   }
 
-  searchBarOnBlur(): void {
-    this.searchBarIsFocused = false;
-  }
 }
