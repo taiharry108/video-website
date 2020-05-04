@@ -1,0 +1,29 @@
+.ep-content-container {
+  margin-left: 140px;
+  margin-top: 40px;
+}
+
+.ep-content-container-sm {
+  margin-left: 40px;
+  margin-top: 40px;
+}
+
+.ep-details h1 {
+  color: #3f51b5;
+}
+
+.ep-details h2 {
+  font-weight: lighter;
+}
+
+.show-detail-container {
+  max-width: 300px;
+}
+
+:host >>> .mat-figure {
+    justify-content: start !important;
+}
+
+h3.detail {
+  margin: 0;
+}

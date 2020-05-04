@@ -6,14 +6,13 @@ import {
   OnInit,
   OnDestroy,
 } from '@angular/core';
-import { OverlayComponent } from '../video-player/overlay/overlay.component';
+import { OverlayComponent } from './overlay.component';
 import { Subscription } from 'rxjs';
 
 @Directive({
   selector: '[appOverlay]',
 })
 export class OverlayDirective implements OnInit {
-  playingSub: Subscription;
   constructor(
     private cfResolver: ComponentFactoryResolver,
     public vcRef: ViewContainerRef,

@@ -1,0 +1,21 @@
+<div class="ep-content-container" ngClass.lt-md="ep-content-container-sm">
+  <section class="ep-details">
+    <h1>Gintama Season 1 Episode 1</h1>
+    <h2>You Guys!! Do You Even Have Gintama?!</h2>
+    <app-rating [rating]="8"></app-rating>
+  </section>
+  <section class="show-detail">
+    <div class="show-detail-container">
+      <mat-grid-list cols="2" rowHeight="3:1">
+        <mat-grid-tile><h3 class="detail">Author</h3></mat-grid-tile>
+        <mat-grid-tile><h3 class="detail">Hideaki Sorachi</h3></mat-grid-tile>
+        <mat-grid-tile><h3 class="detail">Last Update</h3></mat-grid-tile>
+        <mat-grid-tile
+          ><h3 class="detail">{{ lastUpdate | date }}</h3></mat-grid-tile
+        >
+        <mat-grid-tile><h3 class="detail">Studio</h3></mat-grid-tile>
+        <mat-grid-tile><h3 class="detail">Sunrise</h3></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </section>
+</div>

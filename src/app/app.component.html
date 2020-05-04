@@ -1,7 +1,7 @@
 <mat-sidenav-container>
   <mat-sidenav-content>
-    <app-header></app-header>    
-    <main>
+    <app-header></app-header>
+    <main [ngClass.gt-md]="'main-gt-md'">
       <router-outlet></router-outlet>
     </main>
   </mat-sidenav-content>

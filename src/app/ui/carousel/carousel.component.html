@@ -1,0 +1,15 @@
+<div class="carousel-container" ngClass.gt-md='carousel-container-gt-md'>
+  <div class="carousel" fxLayoutAlign="row">
+    <div class="carousel-slide-container" #carousel>
+      <div class="carousel-slide" *ngFor="let slide of slides; let i = index">
+        <img [src]="slide.src" class="slide" />
+      </div>
+    </div>
+    <button class="control prev" (click)="onPrevClick()">
+      <span class="arrow left"></span>
+    </button>
+    <button class="control next" (click)="onNextClick()">
+      <span class="arrow right"></span>
+    </button>
+  </div>
+</div>

@@ -9,6 +9,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { OverlayModule } from '@angular/cdk/overlay';
+import { MatListModule } from '@angular/material/list';
+import { MatGridListModule } from '@angular/material/grid-list';
+
 
 const modules = [
   MatSidenavModule,
@@ -20,7 +23,9 @@ const modules = [
   MatInputModule,
   MatAutocompleteModule,
   MatTabsModule,
-  OverlayModule
+  OverlayModule,
+  MatListModule,
+  MatGridListModule
 ];
 
 @NgModule({

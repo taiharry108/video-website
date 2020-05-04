@@ -20,7 +20,12 @@ import { SearchResultComponent } from './feature/search/search-result/search-res
 import { ShowListComponent } from './show-list/show-list.component';
 import { VjsPlayerComponent } from './video-player/vjs-player/vjs-player.component';
 import { OverlayComponent } from './video-player/overlay/overlay.component';
-import { OverlayDirective } from './overlay/overlay.directive';
+import { OverlayDirective } from './video-player/overlay/overlay.directive';
+import { PlaylistComponent } from './video-player/playlist/playlist.component';
+import { EpContentComponent } from './video-player/ep-content/ep-content.component';
+import { MainComponent } from './video-player/main/main.component';
+import { RatingComponent } from './feature/rating/rating.component';
+import { CarouselComponent } from './ui/carousel/carousel.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +38,11 @@ import { OverlayDirective } from './overlay/overlay.directive';
     VjsPlayerComponent,
     OverlayComponent,
     OverlayDirective,
+    PlaylistComponent,
+    EpContentComponent,
+    MainComponent,
+    RatingComponent,
+    CarouselComponent,
   ],
   imports: [
     BrowserModule,
