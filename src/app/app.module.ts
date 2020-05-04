@@ -26,6 +26,8 @@ import { EpContentComponent } from './video-player/ep-content/ep-content.compone
 import { MainComponent } from './video-player/main/main.component';
 import { RatingComponent } from './feature/rating/rating.component';
 import { CarouselComponent } from './ui/carousel/carousel.component';
+import { FeaturedListComponent } from './featured-list/featured-list.component';
+import { CarouselService } from './ui/carousel/carousel.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { CarouselComponent } from './ui/carousel/carousel.component';
     MainComponent,
     RatingComponent,
     CarouselComponent,
+    FeaturedListComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,8 +60,8 @@ import { CarouselComponent } from './ui/carousel/carousel.component';
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
   ],
-  providers: [SearchService],
+  providers: [SearchService, CarouselService],
   bootstrap: [AppComponent],
-  entryComponents: [OverlayComponent],
+  entryComponents: [OverlayComponent, CarouselComponent],
 })
 export class AppModule {}

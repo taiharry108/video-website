@@ -28,7 +28,13 @@ export const getFilteredShows = createSelector(
   fromVideo.getFilteredShows
 );
 
+export const getFeaturedShows = createSelector(
+  getVideoState,
+  fromVideo.getFeaturedShows
+);
+
 export const getIsPlaying = createSelector(
   getVideoState,
   fromVideo.getIsPlaying
 )
+

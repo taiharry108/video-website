@@ -6,6 +6,7 @@ export interface Show {
     numEps: number;
     thumImgUrl: string;
     state: 'onGoing' | 'finished' | null;
+    bannerImgUrl?: string;
 }
 
 export interface Season {

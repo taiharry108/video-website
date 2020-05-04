@@ -11,7 +11,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
-
+import { PortalModule } from '@angular/cdk/portal';
 
 const modules = [
   MatSidenavModule,
@@ -25,7 +25,8 @@ const modules = [
   MatTabsModule,
   OverlayModule,
   MatListModule,
-  MatGridListModule
+  MatGridListModule,
+  PortalModule,
 ];
 
 @NgModule({

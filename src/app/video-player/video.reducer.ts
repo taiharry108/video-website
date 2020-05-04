@@ -4,9 +4,10 @@ import {
   STOP_LOADING,
   SET_LATEST_SHOWS,
   SET_FILTERED_SHOWS,
+  SET_FEATURED_SHOWS,
   TOGGLE_PLAY,
   START_PLAYING,
-  STOP_PLAYING
+  STOP_PLAYING,
 } from './video.actions';
 import { Show } from './show.model';
 
@@ -15,12 +16,14 @@ export interface State {
   latestShows: Show[];
   filteredShows: Show[];
   isPlaying: boolean;
+  featuredShows: Show[];
 }
 
 const initialState: State = {
   isLoading: false,
   latestShows: [],
   filteredShows: [],
+  featuredShows: [],
   isPlaying: null,
 };
 
@@ -49,6 +52,11 @@ export function videoReducer(
         ...state,
         filteredShows: action.payload,
       };
+    case SET_FEATURED_SHOWS:
+      return {
+        ...state,
+        featuredShows: action.payload,
+      };
     case TOGGLE_PLAY:
       return {
         ...state,
@@ -72,4 +80,5 @@ export function videoReducer(
 export const getIsLoading = (state: State) => state.isLoading;
 export const getLatestShows = (state: State) => state.latestShows;
 export const getFilteredShows = (state: State) => state.filteredShows;
+export const getFeaturedShows = (state: State) => state.featuredShows;
 export const getIsPlaying = (state: State) => state.isPlaying;
