@@ -1,8 +1,77 @@
 // Import material theming functions
-@import '~@angular/material/theming';
-@import './mytheme.scss';
+@import "~@angular/material/theming";
+$md-mcgpalette0: (
+  50: #e0e9f4,
+  100: #b3c9e3,
+  200: #80a5d1,
+  300: #4d81be,
+  400: #2666b0,
+  500: #004ba2,
+  600: #00449a,
+  700: #003b90,
+  800: #003386,
+  900: #002375,
+  A100: #a3b7ff,
+  A200: #708fff,
+  A400: #3d67ff,
+  A700: #2453ff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$md-mcgpalette1: (
+  50: #f5f5f3,
+  100: #e7e6e1,
+  200: #d7d5ce,
+  300: #c7c4ba,
+  400: #bbb8ab,
+  500: #afab9c,
+  600: #a8a494,
+  700: #9f9a8a,
+  800: #969180,
+  900: #86806e,
+  A100: #ffffff,
+  A200: #fdf3d2,
+  A400: #ffe89d,
+  A700: #ffe184,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+$candy-app-primary: mat-palette($md-mcgpalette0, 100);
+$candy-app-accent: mat-palette($md-mcgpalette1, 400);
+$candy-app-warn: mat-palette($mat-red);
 
 // Create your Sass color vars (will be available in all the project)
-$primary: mat-color($candy-app-primary, 200);
+$primary: mat-color($candy-app-primary, 100);
 $accent: mat-color($candy-app-accent);
 $warn: mat-color($candy-app-warn);

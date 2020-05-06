@@ -6,22 +6,34 @@
         (mouseover)="showDetails(i)"
         (mouseleave)="showDetails(-1)"
       >
-        <img
-          class="show-img"
-          [src]="show.thumImgUrl"
-          />
-          <!-- [ngStyle]="getImgStyle(i)" -->
         <div
-          [fxShow]="i == displayIdx"
+          class="background-img"
+          [ngStyle]="getBgStyle(show.thumImgUrl)"
+          [@bgBlur]="i == displayIdx ? 'blur' : 'no-blur'"
+        >
+          &nbsp;
+        </div>
+        <div
+          class="background-filter"
+          [@bgFilter]="i == displayIdx ? 'filter' : 'no-filter'"
+        >
+          &nbsp;
+        </div>
+        <div
           class="show-details-container"
           fxLayout="column"
           fxLayoutAlign="end start"
           (click)="goto(show.id)"
+          [@out2In]="i == displayIdx ? 'in' : 'out'"
+          [ngClass]="i == displayIdx ? 'display' : ''"
         >
           <div class="show-name">{{ show.name }}</div>
           <div class="show-name">{{ show.numEps }} Episodes</div>
           <div class="show-name">{{ show.numSeasons }} Seasons</div>
-          <app-rating [rating]="show.rating" [isInteractive]="false"></app-rating>
+          <app-rating
+            [rating]="show.rating"
+            [isInteractive]="false"
+          ></app-rating>
         </div>
       </div>
     </mat-grid-tile>

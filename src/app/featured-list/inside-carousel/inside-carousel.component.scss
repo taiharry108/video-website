@@ -1,6 +1,7 @@
+@import '../../../variables';
 .carousel-details-container {
   position: absolute;
-  color: white;
+  color: $accent;
   bottom: 0;
   margin: 20px;
   width: 100%;
