@@ -11,7 +11,6 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { reducers } from './app.reducer';
 import { SearchBarComponent } from './feature/search/search-bar/search-bar.component';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
@@ -28,6 +27,9 @@ import { RatingComponent } from './feature/rating/rating.component';
 import { CarouselComponent } from './ui/carousel/carousel.component';
 import { FeaturedListComponent } from './featured-list/featured-list.component';
 import { CarouselService } from './ui/carousel/carousel.service';
+import { AuthModule } from './auth/auth.module';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -55,13 +57,15 @@ import { CarouselService } from './ui/carousel/carousel.service';
     MaterialModule,
     FlexLayoutModule,
     StoreModule.forRoot(reducers),
-    ReactiveFormsModule,
-    FormsModule,
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AuthModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule,
   ],
   providers: [SearchService, CarouselService],
   bootstrap: [AppComponent],
-  entryComponents: [OverlayComponent, CarouselComponent],
+  entryComponents: [OverlayComponent],
 })
 export class AppModule {}

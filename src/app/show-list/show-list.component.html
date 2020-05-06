@@ -1,6 +1,6 @@
 <section class="shows-container">
   <mat-grid-list cols="4">
-    <mat-grid-tile *ngFor="let show of shows; let i = index">
+    <mat-grid-tile *ngFor="let show of shows$ | async; let i = index">
       <div
         class="show-img-container"
         (mouseover)="showDetails(i)"
@@ -9,18 +9,19 @@
         <img
           class="show-img"
           [src]="show.thumImgUrl"
-          [ngStyle]="getImgStyle(i)"
-        />
+          />
+          <!-- [ngStyle]="getImgStyle(i)" -->
         <div
           [fxShow]="i == displayIdx"
           class="show-details-container"
           fxLayout="column"
           fxLayoutAlign="end start"
+          (click)="goto(show.id)"
         >
           <div class="show-name">{{ show.name }}</div>
           <div class="show-name">{{ show.numEps }} Episodes</div>
           <div class="show-name">{{ show.numSeasons }} Seasons</div>
-          <app-rating [rating]="8" [isInteractive]="false"></app-rating>
+          <app-rating [rating]="show.rating" [isInteractive]="false"></app-rating>
         </div>
       </div>
     </mat-grid-tile>

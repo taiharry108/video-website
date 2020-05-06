@@ -1,46 +1,40 @@
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
-import { Season, Ep } from '../show.model';
+import { Season, Ep, Show } from '../show.model';
 import { Observable, Subscription } from 'rxjs';
-import { AngularFirestore } from '@angular/fire/firestore';
+import * as fromRoot from '../../app.reducer';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'app-playlist',
   templateUrl: './playlist.component.html',
-  styleUrls: ['./playlist.component.css'],
+  styleUrls: ['./playlist.component.scss'],
 })
 export class PlaylistComponent implements OnInit, OnDestroy {
   @Input() showId: string;
   seasonSub: Subscription;
+  showSub: Subscription;
   epSub: Subscription;
-  seasons: Season[];
+  seasons$: Observable<Season[]>;
+
   eps: Map<string, Ep[]>;
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private store: Store<fromRoot.State>) {}
 
   ngOnInit(): void {
-    // this.eps = new Map<string, Ep[]>();
-    // let self = this;
-    // this.seasonSub = this.db
-    //   .collection('seasons', (ref) => ref.where('showId', '==', this.showId))
-    //   .valueChanges()
-    //   .subscribe((seasons: Season[]) => {
-    //     this.seasons = seasons;
-    //   });
-    // this.epSub = this.db
-    //   .collection('eps', (ref) => ref.where('showId', '==', this.showId))
-    //   .valueChanges()
-    //   .subscribe((eps: Ep[]) => {
-    //     eps.map((ep) => {
-    //       const key = ep.seasonId;
-    //       if (!self.eps.has(key)) self.eps.set(key, new Array<Ep>());
-    //       self.eps.get(key).push(ep);
-    //     });
-    //     console.log(self.eps);
-    //   });
+    this.eps = new Map<string, Ep[]>();
+    this.seasons$ = this.store.select(fromRoot.getFetchedSeasons);
+    this.epSub = this.store
+      .select(fromRoot.getFetchedEps)
+      .subscribe((eps: Ep[]) => {        
+        eps.map((ep) => {
+          const key = ep.seasonId;
+          if (!(key in this.eps)) this.eps[key] = new Array<Ep>();
+          this.eps[key].push(ep);
+        });
+      });
   }
 
   ngOnDestroy(): void {
-    // this.seasonSub.unsubscribe();
-    // this.epSub.unsubscribe();
+    this.epSub.unsubscribe();
   }
 }

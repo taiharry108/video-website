@@ -4,6 +4,7 @@
     color="accent"
     *ngFor="let idx of [0, 1, 2, 3, 4]"
     (mousemove)="calRating($event, idx)"
+    (mouseleave)="resetRating()"
     >{{ getIcon(idx) }}</mat-icon
   >
 </div>

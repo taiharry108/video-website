@@ -1,49 +1,11 @@
 <div class="playlist-container">
   <mat-tab-group animationDuration="0ms">
-    <!-- <mat-tab *ngFor="let season of seasons" [label]="season.name">
-      <mat-action-list>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-        <button mat-list-item *ngFor="let ep of eps.get(season.id)">
-          {{ ep.name }}
-        </button>
-      </mat-action-list>      
-    </mat-tab> -->
-    <mat-tab label="Season 1">
+    <mat-tab [label]="season.name" *ngFor="let season of seasons$ | async">
       <div class="ep-list-container">
         <mat-action-list>
-          <button mat-list-item>Ep 01</button>
-          <button mat-list-item>Ep 01</button>
-          <button mat-list-item>Ep 01</button>
-          <button mat-list-item>Ep 01</button>
-          <button mat-list-item>Ep 02</button>
-          <button mat-list-item>Ep 02</button>
-          <button mat-list-item>Ep 02</button>
-          <button mat-list-item>Ep 02</button>
-          <button mat-list-item>Ep 03</button>
-          <button mat-list-item>Ep 03</button>
-          <button mat-list-item>Ep 03</button>
-          <button mat-list-item>Ep 03</button>
+          <button mat-list-item *ngFor="let ep of eps[season.id]">{{ ep.name }}</button>
         </mat-action-list>
       </div>
-    </mat-tab>
-    <mat-tab label="Season 2"></mat-tab>
-    <mat-tab label="Season 3"></mat-tab><mat-tab label="Season 2"></mat-tab>
-    <mat-tab label="Season 3"></mat-tab><mat-tab label="Season 2"></mat-tab>
-    <mat-tab label="Season 3"></mat-tab><mat-tab label="Season 2"></mat-tab>
-    <mat-tab label="Season 3"></mat-tab>
+    </mat-tab>    
   </mat-tab-group>
 </div>

@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-overlay',
   templateUrl: './overlay.component.html',
-  styleUrls: ['./overlay.component.css'],
+  styleUrls: ['./overlay.component.scss'],
   animations: [
     trigger('inAndOut', [
       state('in', style({ display: 'none' })),

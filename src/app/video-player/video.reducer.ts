@@ -5,11 +5,15 @@ import {
   SET_LATEST_SHOWS,
   SET_FILTERED_SHOWS,
   SET_FEATURED_SHOWS,
+  SET_FETCHED_SEASONS,
+  SET_FETCHED_EPS,
+  SET_ACTIVE_SHOW,
+  SET_ACTIVE_EP,
   TOGGLE_PLAY,
   START_PLAYING,
   STOP_PLAYING,
 } from './video.actions';
-import { Show } from './show.model';
+import { Show, Season, Ep } from './show.model';
 
 export interface State {
   isLoading: boolean;
@@ -17,6 +21,10 @@ export interface State {
   filteredShows: Show[];
   isPlaying: boolean;
   featuredShows: Show[];
+  fetchedSeasons: Season[];
+  fetchedEps: Ep[];
+  activeShow: Show;
+  activeEp: Ep;
 }
 
 const initialState: State = {
@@ -25,6 +33,10 @@ const initialState: State = {
   filteredShows: [],
   featuredShows: [],
   isPlaying: null,
+  fetchedSeasons: [],
+  fetchedEps: [],
+  activeShow: null,
+  activeEp: null,
 };
 
 export function videoReducer(
@@ -57,6 +69,26 @@ export function videoReducer(
         ...state,
         featuredShows: action.payload,
       };
+    case SET_FETCHED_SEASONS:
+      return {
+        ...state,
+        fetchedSeasons: action.payload,
+      };
+    case SET_FETCHED_EPS:
+      return {
+        ...state,
+        fetchedEps: action.payload,
+      };
+    case SET_ACTIVE_SHOW:
+      return {
+        ...state,
+        activeShow: action.payload,
+      };
+    case SET_ACTIVE_EP:
+      return {
+        ...state,
+        activeEp: action.payload,
+      };
     case TOGGLE_PLAY:
       return {
         ...state,
@@ -81,4 +113,8 @@ export const getIsLoading = (state: State) => state.isLoading;
 export const getLatestShows = (state: State) => state.latestShows;
 export const getFilteredShows = (state: State) => state.filteredShows;
 export const getFeaturedShows = (state: State) => state.featuredShows;
+export const getFetchedSeasons = (state: State) => state.fetchedSeasons;
+export const getFetchedEps = (state: State) => state.fetchedEps;
+export const getActiveShow = (state: State) => state.activeShow;
+export const getActiveEp = (state: State) => state.activeEp;
 export const getIsPlaying = (state: State) => state.isPlaying;

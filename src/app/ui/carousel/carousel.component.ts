@@ -4,9 +4,6 @@ import {
   ViewChild,
   ElementRef,
   AfterViewInit,
-  Input,
-  TemplateRef,
-  Inject,
   InjectionToken,
 } from '@angular/core';
 import {
@@ -23,7 +20,7 @@ export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
 @Component({
   selector: 'app-carousel',
   templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.css'],
+  styleUrls: ['./carousel.component.scss'],
 })
 export class CarouselComponent implements OnInit, AfterViewInit {
 

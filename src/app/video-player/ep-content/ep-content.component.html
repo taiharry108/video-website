@@ -1,20 +1,30 @@
 <div class="ep-content-container" ngClass.lt-md="ep-content-container-sm">
   <section class="ep-details">
-    <h1>Gintama Season 1 Episode 1</h1>
-    <h2>You Guys!! Do You Even Have Gintama?!</h2>
-    <app-rating [rating]="8"></app-rating>
+    <h1>{{ show.name }} Season 1 Episode 1</h1>
+    <h2>This is a dummy title</h2>
+    <app-rating *ngIf="show.rating" [rating]="show.rating"></app-rating>
   </section>
   <section class="show-detail">
-    <div class="show-detail-container">
-      <mat-grid-list cols="2" rowHeight="3:1">
-        <mat-grid-tile><h3 class="detail">Author</h3></mat-grid-tile>
-        <mat-grid-tile><h3 class="detail">Hideaki Sorachi</h3></mat-grid-tile>
-        <mat-grid-tile><h3 class="detail">Last Update</h3></mat-grid-tile>
+    <div class="show-detail-container" *ngIf="metaKeys">
+      <mat-grid-list cols="2" rowHeight="3:1" >
+        <ng-container *ngFor="let key of metaKeys">
+          <mat-grid-tile
+            ><h3 class="detail">
+              {{ key }}
+            </h3></mat-grid-tile
+          >
+          <mat-grid-tile
+            ><h3 class="detail">
+              {{ show.meta[key] }}
+            </h3></mat-grid-tile
+          >
+        </ng-container>
+        <!-- <mat-grid-tile><h3 class="detail">Last Update</h3></mat-grid-tile>
         <mat-grid-tile
           ><h3 class="detail">{{ lastUpdate | date }}</h3></mat-grid-tile
         >
         <mat-grid-tile><h3 class="detail">Studio</h3></mat-grid-tile>
-        <mat-grid-tile><h3 class="detail">Sunrise</h3></mat-grid-tile>
+        <mat-grid-tile><h3 class="detail">Sunrise</h3></mat-grid-tile> -->
       </mat-grid-list>
     </div>
   </section>

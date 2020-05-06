@@ -12,7 +12,11 @@ import { OverlayModule } from '@angular/cdk/overlay';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { PortalModule } from '@angular/cdk/portal';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 const modules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -27,6 +31,11 @@ const modules = [
   MatListModule,
   MatGridListModule,
   PortalModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatSnackBarModule,
+  MatCheckboxModule,
 ];
 
 @NgModule({

@@ -1,20 +1,25 @@
+@import '../../../variables';
+
 a {
   text-decoration: none;
   color: white;
+  &:hover {
+    color: lightgrey;
+  }
+  &:active {
+    color: lightgrey;
+  }
 }
-
-a:hover,
-a:active {
-  color: lightgrey;
-}
-
 .navigation-items {
   list-style: none;
   padding: 0;
   margin: 0;
 }
-
 .nav-caption {
   display: inline-block;
   padding-left: 6px;
+}
+.mat-toolbar {
+  margin: auto;
+  background-color: $primary;
 }

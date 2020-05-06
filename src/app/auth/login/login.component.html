@@ -1,0 +1,53 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+  <h1 mat-dialog-title>Login</h1>
+
+  <div mat-dialog-content fxLayout="column" fxLayoutAlign="center center">
+    <h3>
+      Enter your email address and password, or sign in through one of the
+      following social media channels.
+    </h3>
+    <div class="form-form-container">
+      <form
+        (ngSubmit)="onSubmit()"
+        class="login-form"
+        [formGroup]="loginForm"
+        fxLayoutGap="10px"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+      >
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input
+            matInput
+            type="email"
+            placeholder="Your Email"
+            formControlName="email"
+          />
+          <mat-hint>Please etner a valid email.</mat-hint>
+          <mat-error>Invalid or miss email.</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Password:</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Your Passord"
+            formControlName="password"
+          />
+          <mat-hint>Please etner your password.</mat-hint>
+          <mat-error>Missing password.</mat-error>
+        </mat-form-field>
+        <button
+          type="submit"
+          mat-raised-button
+          color="primary"
+          [disabled]="loginForm.invalid"
+          *ngIf="!(isLoading$ | async)"
+        >
+          Submit
+        </button>
+        <mat-spinner *ngIf="isLoading$ | async"></mat-spinner>
+      </form>
+    </div>
+  </div>
+</div>

@@ -30,7 +30,7 @@ export enum DISPLAY_TYPE {
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css'],
+  styleUrls: ['./search-bar.component.scss'],
   animations: [
     trigger('slideInOut', [
       state('true', style({ width: '*' })),

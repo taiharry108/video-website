@@ -15,13 +15,13 @@ import { Show } from '../video-player/show.model';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { CarouselComponent } from '../ui/carousel/carousel.component';
 import { CarouselService } from '../ui/carousel/carousel.service';
-import { InsideCarouselComponent } from './inside-carousel.component';
-import { InsideCarouselRef, Data } from './inside-carousel-ref';
+import { InsideCarouselComponent } from './inside-carousel/inside-carousel.component';
+import { InsideCarouselRef, Data } from './inside-carousel/inside-carousel-ref';
 
 @Component({
   selector: 'app-featured-list',
   templateUrl: './featured-list.component.html',
-  styleUrls: ['./featured-list.component.css'],
+  styleUrls: ['./featured-list.component.scss'],
 })
 export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
   templateArr: TemplateRef<HTMLElement>[];
@@ -41,10 +41,12 @@ export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
     {
       header: 'Gintama is coming back in 3 Days!',
       subheader: 'Available in Japanese | English',
+      showId: '1',
     },
     {
       header: 'New episode of Kaguya-sama is out!',
       subheader: 'Available in Japanese | English',
+      showId: '2',
     },
   ];
 

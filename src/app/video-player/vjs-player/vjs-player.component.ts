@@ -17,7 +17,7 @@ import * as Video from '../video.actions';
 @Component({
   selector: 'app-vjs-player',
   templateUrl: './vjs-player.component.html',
-  styleUrls: ['./vjs-player.component.css'],
+  styleUrls: ['./vjs-player.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
 export class VjsPlayerComponent implements OnInit, OnDestroy {

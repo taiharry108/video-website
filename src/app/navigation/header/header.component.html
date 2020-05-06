@@ -1,4 +1,4 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="toolbar" color="primary">
   <div fxHide.gt-xs>
     <button mat-icon-button (click)="onToggleSidenav()">
       <mat-icon>menu</mat-icon>
@@ -9,17 +9,20 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li [fxHide]="searchBar.searchVisible">
+      <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
         <a routerLink="/signup">Signup</a>
       </li>
-      <li [fxHide]="searchBar.searchVisible">
-        <a routerLink="/login">Login</a>
+      <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
+        <a routerLink="/login" (click)="openLoginDialog()">Login</a>
       </li>
-      <li [fxHide]="searchBar.searchVisible">
+      <li [fxHide]="searchBar.searchVisible || !(isAuthenticated$ | async)">
         <a style="cursor: pointer;">Logout</a>
       </li>
       <li>
-        <app-search-bar #searchBar (onEnter)="searchBarOnEnter($event)"></app-search-bar>
+        <app-search-bar
+          #searchBar
+          (onEnter)="searchBarOnEnter($event)"
+        ></app-search-bar>
       </li>
     </ul>
   </div>

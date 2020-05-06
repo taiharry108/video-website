@@ -1,3 +1,5 @@
+import { Rating } from '../feature/rating/rating.component';
+
 export interface Show {
     lastUpdate: Date;
     name: string;
@@ -7,6 +9,8 @@ export interface Show {
     thumImgUrl: string;
     state: 'onGoing' | 'finished' | null;
     bannerImgUrl?: string;
+    meta: object;
+    rating: Rating;
 }
 
 export interface Season {

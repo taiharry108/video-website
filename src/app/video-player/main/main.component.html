@@ -16,8 +16,9 @@
     <div fxFlex="1 1 400px" fxFlexOrder="3" fxFlexOrder.lt-md="1">
       <app-playlist [showId]="showId"></app-playlist>
     </div>
-    <div fxFlex="1 0 auto" fxFlexOrder="2">
-      <img class="show-img" src="assets/gintama.jpg" />
+    <div fxFlex="1 0 300px" fxFlexOrder="2" fxLayout fxLayoutAlign="center center">
+      <img *ngIf="show$ | async" class="show-img" [src]="(show$ | async).thumImgUrl" />
+      <mat-spinner *ngIf="!(show$ | async)"></mat-spinner>
     </div>
     <div fxFlex="8 8 auto" fxFlexOrder="1" fxFlexOrder.lt-md="2">
       <app-ep-content></app-ep-content>

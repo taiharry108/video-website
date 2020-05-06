@@ -1,14 +1,14 @@
 .carousel-container {
   overflow: hidden;
-  margin: 20px 1%;
-  -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.5);
+  /* margin: 20px 1%; */
+  /* -webkit-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.5);
   -moz-box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.5);
-  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.5);
-  transition: all 0.2s ease-in;
+  box-shadow: 0px 0px 17px 0px rgba(0, 0, 0, 0.5); */
+  /* transition: all 0.2s ease-in; */
 }
 
 .carousel-container:hover {
-  transform: scale(1.03);
+  /* transform: scale(1.03); */
 }
 
 .carousel {
@@ -85,6 +85,6 @@
 }
 
 .carousel-container-gt-md {
-  border-radius: 30px;
+  /* border-radius: 30px; */
 }
 
