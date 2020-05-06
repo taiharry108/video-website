@@ -3,6 +3,7 @@ import { Show, Season, Ep } from '../video-player/show.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as Video from '../video-player/video.actions';
+import * as UI from '../ui/ui.actions';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { mockShows } from './mock-show';
@@ -121,6 +122,7 @@ export class ShowService {
   }
 
   fetchLatestShow(): void {
+    this.store.dispatch(new UI.StartLoading());
     this.db
       .collection('shows')
       .snapshotChanges()
@@ -139,6 +141,7 @@ export class ShowService {
       )
       .subscribe((shows: Show[]) => {
         this.store.dispatch(new Video.SetLatestShows(shows));
+        this.store.dispatch(new UI.StopLoading());
       });
   }
 }

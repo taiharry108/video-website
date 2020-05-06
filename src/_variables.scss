@@ -74,4 +74,6 @@ $candy-app-warn: mat-palette($mat-red);
 // Create your Sass color vars (will be available in all the project)
 $primary: mat-color($candy-app-primary, 100);
 $accent: mat-color($candy-app-accent);
+$light-accent: mat-color($candy-app-accent, 200);
+$dark-accent: mat-color($candy-app-accent, 900);
 $warn: mat-color($candy-app-warn);

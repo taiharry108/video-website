@@ -1,41 +1,44 @@
 <section class="shows-container">
-  <mat-grid-list cols="4">
-    <mat-grid-tile *ngFor="let show of shows$ | async; let i = index">
-      <div
-        class="show-img-container"
-        (mouseover)="showDetails(i)"
-        (mouseleave)="showDetails(-1)"
-      >
+  <div class="section-headline-container"><h1>Latest Update</h1></div>
+  <div class="grid-container">
+    <mat-grid-list cols="4">
+      <mat-grid-tile *ngFor="let show of shows$ | async; let i = index">
         <div
-          class="background-img"
-          [ngStyle]="getBgStyle(show.thumImgUrl)"
-          [@bgBlur]="i == displayIdx ? 'blur' : 'no-blur'"
+          class="show-img-container"
+          (mouseover)="showDetails(i)"
+          (mouseleave)="showDetails(-1)"
         >
-          &nbsp;
+          <div
+            class="background-img"
+            [ngStyle]="getBgStyle(show.thumImgUrl)"
+            [@bgBlur]="i == displayIdx ? 'blur' : 'no-blur'"
+          >
+            &nbsp;
+          </div>
+          <div
+            class="background-filter"
+            [@bgFilter]="i == displayIdx ? 'filter' : 'no-filter'"
+          >
+            &nbsp;
+          </div>
+          <div
+            class="show-details-container"
+            fxLayout="column"
+            fxLayoutAlign="end start"
+            (click)="goto(show.id)"
+            [@out2In]="i == displayIdx ? 'in' : 'out'"
+            [ngClass]="i == displayIdx ? 'display' : ''"
+          >
+            <div class="show-name">{{ show.name }}</div>
+            <div class="show-name">{{ show.numEps }} Episodes</div>
+            <div class="show-name">{{ show.numSeasons }} Seasons</div>
+            <app-rating
+              [rating]="show.rating"
+              [isInteractive]="false"
+            ></app-rating>
+          </div>
         </div>
-        <div
-          class="background-filter"
-          [@bgFilter]="i == displayIdx ? 'filter' : 'no-filter'"
-        >
-          &nbsp;
-        </div>
-        <div
-          class="show-details-container"
-          fxLayout="column"
-          fxLayoutAlign="end start"
-          (click)="goto(show.id)"
-          [@out2In]="i == displayIdx ? 'in' : 'out'"
-          [ngClass]="i == displayIdx ? 'display' : ''"
-        >
-          <div class="show-name">{{ show.name }}</div>
-          <div class="show-name">{{ show.numEps }} Episodes</div>
-          <div class="show-name">{{ show.numSeasons }} Seasons</div>
-          <app-rating
-            [rating]="show.rating"
-            [isInteractive]="false"
-          ></app-rating>
-        </div>
-      </div>
-    </mat-grid-tile>
-  </mat-grid-list>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
 </section>
