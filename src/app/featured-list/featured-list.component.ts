@@ -33,7 +33,6 @@ export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
     private store: Store<fromRoot.State>,
     private cdr: ChangeDetectorRef,
     private carouselService: CarouselService,
-    private injector: Injector
   ) {}
 
   imgs: string[];
@@ -49,16 +48,6 @@ export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
       showId: '2',
     },
   ];
-
-  createInjector(
-    insideCarouselRef: InsideCarouselRef,
-    injector: Injector
-  ): PortalInjector {
-    const injectorTokens = new WeakMap([
-      [InsideCarouselRef, insideCarouselRef],
-    ]);
-    return new PortalInjector(injector, injectorTokens);
-  }
 
   ngAfterViewInit() {
     this.componentPortal = this.carouselService.getPortal<

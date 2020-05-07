@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
     private showService: ShowService
   ) {}
   ngOnInit(): void {
-    this.authService.initAuthListener();
-    this.showService.fetchLatestShow();
+    // this.authService.initAuthListener();
+    // this.showService.fetchLatestShow();
   }
 }

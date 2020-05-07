@@ -7,17 +7,15 @@ import {
   Portal,
 } from '@angular/cdk/portal';
 import { CarouselComponent } from './carousel.component';
+import { BreakpointObserver } from '@angular/cdk/layout';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarouselService {
-  constructor(private injector: Injector) {}
-
-  // createInjector(carouselRef: CarouselRef, injector: Injector): PortalInjector {
-  //   const injectorTokens = new WeakMap([[CarouselRef, carouselRef]]);
-  //   return new PortalInjector(injector, injectorTokens);
-  // }
+  constructor(
+    private injector: Injector,
+  ) {}
 
   createInjector<T>(ref: T, injector: Injector, type: Type<T>): PortalInjector {
     const injectorTokens = new WeakMap([[type, ref]]);
@@ -27,7 +25,7 @@ export class CarouselService {
   getPortal<T1, T2, T3>(
     content: T1[],
     componentType: ComponentType<T2>,
-    type: Type<T3>,
+    type: Type<T3>
   ): ComponentPortal<CarouselComponent> {
     const portals = content.map((data) => {
       const ref = new type(data);
@@ -47,24 +45,4 @@ export class CarouselService {
     );
     return portal;
   }
-
-  // getPortal(portals: Portal<any>[]): ComponentPortal<CarouselComponent> {
-  //   // const portals = this.content.map((data) => {
-  //   //   const insideRef = new InsideCarouselRef(data);
-  //   //   const portal = new ComponentPortal(
-  //   //     InsideCarouselComponent,
-  //   //     null,
-  //   //     this.createInjector(insideRef, this.injector)
-  //   //   );
-  //   //   return portal;
-  //   // });
-
-  //   const carouselRef = new CarouselRef(portals);
-  //   const portal = new ComponentPortal(
-  //     CarouselComponent,
-  //     null,
-  //     this.createInjector<CarouselRef>(carouselRef, this.injector, CarouselRef)
-  //   );
-  //   return portal;
-  // }
 }

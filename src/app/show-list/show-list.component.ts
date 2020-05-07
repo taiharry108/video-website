@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Show } from '../video-player/show.model';
 import { Observable, Subscription } from 'rxjs';
-import { ShowService } from '../show/show.service';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import { Router } from '@angular/router';
@@ -11,11 +10,8 @@ import {
   trigger,
   transition,
   animate,
-  query,
-  group,
 } from '@angular/animations';
 import { UiService } from '../ui/ui.service';
-import { BreakpointState } from '@angular/cdk/layout';
 
 const fakeShows = [
   {

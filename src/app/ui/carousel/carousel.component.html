@@ -1,10 +1,12 @@
 <div class="carousel-container" ngClass.gt-md="carousel-container-gt-md">
-  <div class="carousel" fxLayoutAlign="row">
+  <div class="carousel" fxLayoutAlign="row" [ngClass]="isLtMd ? 'half' : ''">
     <div class="carousel-slide-container" #carousel>
-      <div class="carousel-slide" *ngFor="let img of imgs; let i = index">
-        <img [src]="img" class="slide" />
-        <ng-container [cdkPortalOutlet]="portals[i]">
-        </ng-container>
+      <div
+        class="carousel-slide"
+        *ngFor="let img of imgs; let i = index"
+        [ngStyle]="{ 'background-image': 'url(' + img + ')' }"
+      >
+        <ng-container [cdkPortalOutlet]="portals[i]"> </ng-container>
       </div>
     </div>
     <button class="control prev" (click)="onPrevClick()">

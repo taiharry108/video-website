@@ -31,6 +31,7 @@ import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
 import { SubNewsletterComponent } from './sub-newsletter/sub-newsletter.component';
+import { InsideCarouselComponent } from './featured-list/inside-carousel/inside-carousel.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { SubNewsletterComponent } from './sub-newsletter/sub-newsletter.componen
     CarouselComponent,
     FeaturedListComponent,
     SubNewsletterComponent,
+    InsideCarouselComponent
   ],
   imports: [
     BrowserModule,

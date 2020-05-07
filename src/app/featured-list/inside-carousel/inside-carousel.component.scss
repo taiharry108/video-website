@@ -1,10 +1,22 @@
-@import '../../../variables';
+@import "../../../variables";
 .carousel-details-container {
   position: absolute;
-  color: $accent;
+  color: black;
   bottom: 0;
   margin: 20px;
-  width: 100%;
+  z-index: 1;
+
+  .bgFilter {
+    background-color: $dark-primary;
+    padding: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.5;
+    z-index: -1;
+  }
 }
 
 .sub-header {

@@ -1,4 +1,9 @@
-<div class="carousel-details-container" (click)="goto()">
+<div
+  class="carousel-details-container"
+  (click)="goto()"
+  [ngStyle]="isLtLg ? { padding: '20px' } : {}"
+>
   <h2 class="header">{{ header }}</h2>
   <h3 class="sub-header">{{ subheader }}</h3>
+  <div [ngClass]="isLtLg ? 'bgFilter' : ''">&nbsp;</div>
 </div>
