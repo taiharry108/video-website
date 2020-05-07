@@ -1,5 +1,5 @@
 import * as fromVideo from './video-player/video.reducer';
-import * as fromUI from './ui/ui.reducer';
+import * as fromUI from './shared/ui/ui.reducer';
 import * as fromAuth from './auth/auth.reducer';
 import {
   ActionReducerMap,

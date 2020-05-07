@@ -10,65 +10,47 @@ import { HeaderComponent } from './navigation/header/header.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { reducers } from './app.reducer';
-import { SearchBarComponent } from './feature/search/search-bar/search-bar.component';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
-import { SearchService } from './feature/search/search.service';
-import { SearchResultComponent } from './feature/search/search-result/search-result.component';
-import { ShowListComponent } from './show-list/show-list.component';
 import { VjsPlayerComponent } from './video-player/vjs-player/vjs-player.component';
 import { OverlayComponent } from './video-player/overlay/overlay.component';
 import { OverlayDirective } from './video-player/overlay/overlay.directive';
 import { PlaylistComponent } from './video-player/playlist/playlist.component';
 import { EpContentComponent } from './video-player/ep-content/ep-content.component';
 import { MainComponent } from './video-player/main/main.component';
-import { RatingComponent } from './feature/rating/rating.component';
-import { CarouselComponent } from './ui/carousel/carousel.component';
-import { FeaturedListComponent } from './featured-list/featured-list.component';
-import { CarouselService } from './ui/carousel/carousel.service';
 import { AuthModule } from './auth/auth.module';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
-import { SubNewsletterComponent } from './sub-newsletter/sub-newsletter.component';
-import { InsideCarouselComponent } from './featured-list/inside-carousel/inside-carousel.component';
+import { WelcomeModule } from './welcome/welcome.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     WelcomeComponent,
-    SearchBarComponent,
-    SearchResultComponent,
-    ShowListComponent,
     VjsPlayerComponent,
     OverlayComponent,
     OverlayDirective,
     PlaylistComponent,
     EpContentComponent,
     MainComponent,
-    RatingComponent,
-    CarouselComponent,
-    FeaturedListComponent,
-    SubNewsletterComponent,
-    InsideCarouselComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    StoreModule.forRoot({}, {}),
     MaterialModule,
     FlexLayoutModule,
     StoreModule.forRoot(reducers),
     AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebase),
     AuthModule,
-    ReactiveFormsModule,
-    FormsModule,
+    // ReactiveFormsModule,
+    // FormsModule,
     SharedModule,
+    WelcomeModule,
   ],
-  providers: [SearchService, CarouselService],
+  providers: [],
   bootstrap: [AppComponent],
   entryComponents: [OverlayComponent],
 })

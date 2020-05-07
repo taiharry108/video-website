@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InsideCarouselRef } from './inside-carousel-ref';
 import { Router } from '@angular/router';
-import { UiService } from 'src/app/ui/ui.service';
+import { UiService } from '../../../shared/ui/ui.service';
 import { Subscription } from 'rxjs';
 
 @Component({

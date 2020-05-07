@@ -1,4 +1,4 @@
-import { Rating } from '../feature/rating/rating.component';
+import { Rating } from '../shared/feature/rating/rating.component';
 
 export interface Show {
     lastUpdate: Date;

@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Show } from '../video-player/show.model';
+import { Show } from '../../video-player/show.model';
 import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../app.reducer';
+import * as fromRoot from '../../app.reducer';
 import { Router } from '@angular/router';
 import {
   style,
@@ -11,7 +11,7 @@ import {
   transition,
   animate,
 } from '@angular/animations';
-import { UiService } from '../ui/ui.service';
+import { UiService } from '../../shared/ui/ui.service';
 
 const fakeShows = [
   {

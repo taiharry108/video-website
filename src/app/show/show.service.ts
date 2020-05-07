@@ -3,7 +3,7 @@ import { Show, Season, Ep } from '../video-player/show.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as Video from '../video-player/video.actions';
-import * as UI from '../ui/ui.actions';
+import * as UI from '../shared/ui/ui.actions';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { mockShows } from './mock-show';

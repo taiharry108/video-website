@@ -1,13 +1,13 @@
-@import "../../../variables";
+@import "../../../../variables";
 .carousel-details-container {
   position: absolute;
-  color: black;
+  color: $accent;
   bottom: 0;
   margin: 20px;
   z-index: 1;
 
   .bgFilter {
-    background-color: $dark-primary;
+    background-color: black;
     padding: 20px;
     position: absolute;
     top: 0;

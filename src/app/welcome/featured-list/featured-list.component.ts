@@ -9,12 +9,12 @@ import {
   ChangeDetectorRef,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
-import * as fromRoot from '../app.reducer';
+import * as fromRoot from '../../app.reducer';
 import { Subscription, Observable } from 'rxjs';
-import { Show } from '../video-player/show.model';
+import { Show } from '../../video-player/show.model';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
-import { CarouselComponent } from '../ui/carousel/carousel.component';
-import { CarouselService } from '../ui/carousel/carousel.service';
+import { CarouselComponent } from '../../shared/ui/carousel/carousel.component';
+import { CarouselService } from '../../shared/ui/carousel/carousel.service';
 import { InsideCarouselComponent } from './inside-carousel/inside-carousel.component';
 import { InsideCarouselRef, Data } from './inside-carousel/inside-carousel-ref';
 

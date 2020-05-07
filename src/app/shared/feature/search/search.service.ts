@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AngularFirestore } from '@angular/fire/firestore';
-import * as fromRoot from '../../app.reducer';
-import * as Video from '../../video-player/video.actions';
+import * as fromRoot from '../../../app.reducer';
+import * as Video from '../../../video-player/video.actions';
 import { Show } from 'src/app/video-player/show.model';
 
 @Injectable({

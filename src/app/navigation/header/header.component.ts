@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
-import { SearchService } from '../../feature/search/search.service';
+import { SearchService } from '../../shared/feature/search/search.service';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { LoginComponent } from '../../auth/login/login.component';
@@ -8,7 +8,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
 import * as Auth from '../../auth/auth.actions';
-import { UiService } from 'src/app/ui/ui.service';
+import { UiService } from '../../shared/ui/ui.service';
 
 enum DialogRefType {
   Login,

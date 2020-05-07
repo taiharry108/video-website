@@ -2,10 +2,10 @@ import { Injectable, Type } from '@angular/core';
 import { AuthData } from './auth-data.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
-import * as UI from '../ui/ui.actions';
+import * as UI from '../shared/ui/ui.actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as Auth from './auth.actions';
-import { UiService } from '../ui/ui.service';
+import { UiService } from '../shared/ui/ui.service';
 import { User } from 'firebase';
 
 @Injectable({
