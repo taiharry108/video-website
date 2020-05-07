@@ -1,4 +1,4 @@
-<div class="playlist-container">
+<div class="playlist-container" [ngStyle.lt-md]="{ 'margin': '0 20px' }">
   <mat-tab-group animationDuration="0ms">
     <mat-tab [label]="season.name" *ngFor="let season of seasons$ | async">
       <div class="ep-list-container">

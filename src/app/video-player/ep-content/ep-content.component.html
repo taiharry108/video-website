@@ -1,12 +1,20 @@
-<div class="ep-content-container" ngClass.lt-md="ep-content-container-sm">
+<div class="ep-content-container" ngClass.lt-lg="ep-content-container-lt-lg">
   <section class="ep-details">
     <h1>{{ show.name }} Season 1 Episode 1</h1>
     <h2>This is a dummy title</h2>
     <app-rating *ngIf="show.rating" [rating]="show.rating"></app-rating>
   </section>
   <section class="show-detail">
-    <div class="show-detail-container" *ngIf="metaKeys">
-      <mat-grid-list cols="2" rowHeight="3:1" >
+    <div class="show-detail-container" *ngIf="metaKeys" fxFlex="column">
+      <div class="show-detail-row" *ngFor="let key of metaKeys" fxFlex="row">
+        <div class="show-detail-col">
+          <h3 class="detail">{{ key }}</h3>
+        </div>
+        <div>
+          <h3 class="detail">{{ show.meta[key] }}</h3>
+        </div>
+      </div>
+      <!-- <mat-grid-list cols="2" rowHeight="3:1">
         <ng-container *ngFor="let key of metaKeys">
           <mat-grid-tile
             ><h3 class="detail">
@@ -18,14 +26,14 @@
               {{ show.meta[key] }}
             </h3></mat-grid-tile
           >
-        </ng-container>
+        </ng-container> -->
         <!-- <mat-grid-tile><h3 class="detail">Last Update</h3></mat-grid-tile>
         <mat-grid-tile
           ><h3 class="detail">{{ lastUpdate | date }}</h3></mat-grid-tile
         >
         <mat-grid-tile><h3 class="detail">Studio</h3></mat-grid-tile>
         <mat-grid-tile><h3 class="detail">Sunrise</h3></mat-grid-tile> -->
-      </mat-grid-list>
+      <!-- </mat-grid-list> -->
     </div>
   </section>
 </div>

@@ -7,17 +7,34 @@
       sources: [{ src: 'assets/test.mp4', type: 'video/mp4' }]
     }"
   ></app-vjs-player>
+
   <div
     class="flex-container"
     fxLayout="row"
     fxLayout.lt-md="column"
     fxLayoutAlign="start"
   >
-    <div fxFlex="1 1 400px" fxFlexOrder="3" fxFlexOrder.lt-md="1">
+    <div
+      fxFlex="1 1 400px"
+      fxFlex.lt-lg="1 0 auto"
+      fxFlexOrder="3"
+      fxFlexOrder.lt-md="1"
+    >
       <app-playlist [showId]="showId"></app-playlist>
     </div>
-    <div fxFlex="1 0 300px" fxFlexOrder="2" fxLayout fxLayoutAlign="center center">
-      <img *ngIf="show$ | async" class="show-img" [src]="(show$ | async).thumImgUrl" />
+    <div
+      fxFlex="1 0 300px"
+      class="show-img-container"
+      fxFlexOrder="2"
+      fxLayout
+      fxLayoutAlign="center center"
+      fxHide.lt-lg
+    >
+      <img
+        *ngIf="show$ | async"
+        class="show-img"
+        [src]="(show$ | async).thumImgUrl"
+      />
       <mat-spinner *ngIf="!(show$ | async)"></mat-spinner>
     </div>
     <div fxFlex="8 8 auto" fxFlexOrder="1" fxFlexOrder.lt-md="2">
