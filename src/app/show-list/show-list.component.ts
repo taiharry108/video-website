@@ -84,11 +84,11 @@ const fakeShows = [
     trigger('out2In', [
       transition('out => in', [
         style({ transform: 'translateY(0)' }),
-        animate('0.3s', style({ transform: 'translateY(-100%)' })),
+        animate('0.3s ease-in-out', style({ transform: 'translateY(-100%)' })),
       ]),
       transition('in => out', [
         style({ transform: 'translateY(-100%)' }),
-        animate('0.3s', style({ transform: 'translateY(0)' })),
+        animate('0.3s ease-in-out', style({ transform: 'translateY(0)' })),
       ]),
     ]),
     trigger('containerOut2In', [
@@ -116,7 +116,7 @@ export class ShowListComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    console.log('init showlist');    
+    console.log('init showlist');
     this.shows$ = this.store.select(fromRoot.getLatestShows);
     this.isLoading = true;
     this.loadingSub = this.store

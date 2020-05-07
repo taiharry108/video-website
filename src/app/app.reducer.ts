@@ -25,6 +25,11 @@ export const getIsAuth = createSelector(
   fromAuth.getIsAuth
 );
 
+export const getDisplayVEmailSent = createSelector(
+         getAuthState,
+         fromAuth.getDisplayVEmailSent
+       );
+
 export const getUIState = createFeatureSelector<fromUI.State>('ui');
 export const getIsLoading = createSelector(
   getUIState,

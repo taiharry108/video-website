@@ -67,12 +67,13 @@ $md-mcgpalette1: (
   ),
 );
 
-$candy-app-primary: mat-palette($md-mcgpalette0, 100);
+$candy-app-primary: mat-palette($md-mcgpalette0, 50);
 $candy-app-accent: mat-palette($md-mcgpalette1, 400);
 $candy-app-warn: mat-palette($mat-red);
 
 // Create your Sass color vars (will be available in all the project)
-$primary: mat-color($candy-app-primary, 100);
+$primary: mat-color($candy-app-primary, 50);
+$dark-primary: mat-color($candy-app-primary, 900);
 $accent: mat-color($candy-app-accent);
 $light-accent: mat-color($candy-app-accent, 200);
 $dark-accent: mat-color($candy-app-accent, 900);

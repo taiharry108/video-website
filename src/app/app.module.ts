@@ -30,6 +30,7 @@ import { CarouselService } from './ui/carousel/carousel.service';
 import { AuthModule } from './auth/auth.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from './shared/shared.module';
+import { SubNewsletterComponent } from './sub-newsletter/sub-newsletter.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SharedModule } from './shared/shared.module';
     RatingComponent,
     CarouselComponent,
     FeaturedListComponent,
+    SubNewsletterComponent,
   ],
   imports: [
     BrowserModule,

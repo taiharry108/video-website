@@ -1,0 +1,36 @@
+@import "../../variables";
+
+.sub-newsletter-container {
+  padding: 30px 0;
+  width: 100%;
+  background-color: $dark-accent;
+  color: $primary;
+  h1 {
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+    font-weight: 200;
+  }
+}
+
+.subscribe-form {
+  max-width: 500px;
+  mat-form-field {
+    width: 80%;
+  }
+  mat-checkbox {
+    width: 80%;
+
+    span {
+      white-space: normal;
+    }
+
+    ::ng-deep {
+      .mat-checkbox-inner-container {
+        margin-top: 2px;
+      }
+    }
+  }
+}

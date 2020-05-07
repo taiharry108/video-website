@@ -12,6 +12,7 @@ import { Store } from '@ngrx/store';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  displayVEmailSent$: Observable<boolean>;
   isLoading$: Observable<boolean>;
   constructor(
     private authService: AuthService,
@@ -19,13 +20,14 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.displayVEmailSent$ = this.store.select(fromRoot.getDisplayVEmailSent);
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email],
       }),
       password: new FormControl('', { validators: [Validators.required] }),
-    });
+    });    
   }
 
   onSubmit(): void {

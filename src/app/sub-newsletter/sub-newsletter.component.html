@@ -1,0 +1,35 @@
+<div class="sub-newsletter-container">
+  <section fxLayout="column" fxLayoutAlign="center center">
+    <form
+      class="subscribe-form"
+      fxLayoutGap="20px"
+      fxLayout="column"
+      fxLayoutAlign="start center"
+      [formGroup]="subscribeForm"
+    >
+      <h1>Stay in touch</h1>
+      <h2>
+        You wouldn't wanna miss the latest promotion and latest shows, enter
+        your E-mail to get notified!
+      </h2>
+      <mat-form-field>
+        <mat-label>Email:</mat-label>
+        <input
+          matInput
+          type="email"
+          placeholder="Your Email"
+          formControlName="email"
+        />
+        <mat-hint>Please etner a valid email.</mat-hint>
+        <mat-error>Invalid or miss email.</mat-error>
+      </mat-form-field>
+      <mat-checkbox formControlName="agree"
+        ><span
+          >By ticking this box and submitting your details to sign-up to to our
+          newsletter, you consent to your personal details being used by One
+          Tower Bridge to send you email communications.</span
+        ></mat-checkbox
+      >
+    </form>
+  </section>
+</div>

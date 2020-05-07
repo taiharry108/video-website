@@ -10,13 +10,13 @@
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
       <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
-        <a routerLink="/signup">Signup</a>
+        <a (click)="openSignupDialog()">Signup</a>
       </li>
       <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
-        <a routerLink="/login" (click)="openLoginDialog()">Login</a>
+        <a (click)="openLoginDialog()">Login</a>
       </li>
       <li [fxHide]="searchBar.searchVisible || !(isAuthenticated$ | async)">
-        <a style="cursor: pointer;">Logout</a>
+        <a (click)="signout()">Logout</a>
       </li>
       <li>
         <app-search-bar
