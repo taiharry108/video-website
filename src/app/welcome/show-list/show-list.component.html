@@ -7,6 +7,7 @@
           class="show-img-container"
           (mouseover)="showDetails(i)"
           (mouseleave)="showDetails(-1)"
+          (click)="goto(show.id)"
         >
           <div
             class="background-img"
@@ -25,7 +26,6 @@
             class="show-details-container"
             fxLayout="column"
             fxLayoutAlign="end start"
-            (click)="goto(show.id)"
             [@out2In]="i == displayIdx ? 'in' : 'out'"
             [ngClass]="i == displayIdx ? 'display' : ''"
           >

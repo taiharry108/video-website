@@ -97,12 +97,13 @@ const fakeShows = [
   ],
 })
 export class ShowListComponent implements OnInit, OnDestroy {
-  // @Input() shows: Show[];
   loadingSub: Subscription;
+  isAuthSub: Subscription;
   isLoading: boolean;
   shows$: Observable<Show[]>;
   displayIdx: number;
   isLtMd: boolean;
+  isAuthenticated: boolean;
 
   bPObSub: Subscription;
 
@@ -115,10 +116,10 @@ export class ShowListComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.loadingSub.unsubscribe();
     this.bPObSub.unsubscribe();
+    this.isAuthSub.unsubscribe();
   }
 
   ngOnInit(): void {
-    console.log('init showlist');
     this.shows$ = this.store.select(fromRoot.getLatestShows);
     this.isLoading = true;
     this.loadingSub = this.store
@@ -128,6 +129,7 @@ export class ShowListComponent implements OnInit, OnDestroy {
     this.bPObSub = this.uiServie.bpObserveLtMd().subscribe((result) => {
       this.isLtMd = result.matches;
     });
+    this.isAuthSub = this.store.select(fromRoot.getIsAuth).subscribe(isAuth => this.isAuthenticated = isAuth);
   }
 
   showDetails(i: number): void {
@@ -140,7 +142,8 @@ export class ShowListComponent implements OnInit, OnDestroy {
   }
 
   goto(showId: string): void {
-    this.router.navigate([`show/${showId}`]);
+    if (this.isAuthenticated)
+      this.router.navigate([`show/${showId}`]);    
   }
 
   animationDone() {
