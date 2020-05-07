@@ -17,6 +17,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { LayoutModule } from '@angular/cdk/layout';
+
 const modules = [
   MatSidenavModule,
   MatToolbarModule,
@@ -36,6 +38,7 @@ const modules = [
   MatDividerModule,
   MatSnackBarModule,
   MatCheckboxModule,
+  LayoutModule
 ];
 
 @NgModule({

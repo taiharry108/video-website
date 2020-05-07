@@ -14,6 +14,8 @@ import {
   query,
   group,
 } from '@angular/animations';
+import { UiService } from '../ui/ui.service';
+import { BreakpointState } from '@angular/cdk/layout';
 
 const fakeShows = [
   {
@@ -104,15 +106,19 @@ export class ShowListComponent implements OnInit, OnDestroy {
   isLoading: boolean;
   shows$: Observable<Show[]>;
   displayIdx: number;
+  isLtMd: boolean;
+
+  bPObSub: Subscription;
 
   constructor(
-    private showService: ShowService,
     private store: Store<fromRoot.State>,
-    private router: Router
+    private router: Router,
+    private uiServie: UiService
   ) {}
 
   ngOnDestroy(): void {
     this.loadingSub.unsubscribe();
+    this.bPObSub.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -122,6 +128,10 @@ export class ShowListComponent implements OnInit, OnDestroy {
     this.loadingSub = this.store
       .select(fromRoot.getIsLoading)
       .subscribe((isLoading) => (this.isLoading = isLoading));
+
+    this.bPObSub = this.uiServie.bpObserveLtMd().subscribe((result) => {
+      this.isLtMd = result.matches;
+    });
   }
 
   showDetails(i: number): void {
