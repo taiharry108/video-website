@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
-import { MainComponent } from './video-player/main/main.component';
-
 
 const routes: Routes = [
-  {path: '', component: WelcomeComponent},
-  {path: 'show/:showId', component: MainComponent}
-
+  { path: '', component: WelcomeComponent },
+  {
+    path: 'show/:showId',
+    loadChildren: () =>
+      import('./video-player/video-player.module').then(
+        (m) => m.VideoPlayerModule
+      ),
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule {   
-}
+export class AppRoutingModule {}

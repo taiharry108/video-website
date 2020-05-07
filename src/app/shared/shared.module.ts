@@ -9,9 +9,6 @@ import { SearchResultComponent } from './feature/search/search-result/search-res
 import { RatingComponent } from './feature/rating/rating.component';
 import { CarouselComponent } from './ui/carousel/carousel.component';
 
-import { SearchService } from './feature/search/search.service';
-import { CarouselService } from './ui/carousel/carousel.service';
-
 const modules = [
   CommonModule,
   FormsModule,
@@ -44,7 +41,6 @@ const modules = [
     SearchResultComponent,
     RatingComponent,
     CarouselComponent,
-  ],
-  providers: [SearchService, CarouselService],
+  ],  
 })
 export class SharedModule {}

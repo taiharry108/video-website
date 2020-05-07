@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { WelcomeComponent } from './welcome.component';
 import { ShowListComponent } from './show-list/show-list.component';
 import { FeaturedListComponent } from './featured-list/featured-list.component';
 import { SubNewsletterComponent } from './sub-newsletter/sub-newsletter.component';
@@ -12,13 +14,10 @@ import { SharedModule } from '../shared/shared.module';
     FeaturedListComponent,
     SubNewsletterComponent,
     InsideCarouselComponent,
+    WelcomeComponent,
   ],
   imports: [CommonModule, SharedModule],
   exports: [
-    ShowListComponent,
-    FeaturedListComponent,
-    SubNewsletterComponent,
-    InsideCarouselComponent,
   ],
 })
 export class WelcomeModule {}
