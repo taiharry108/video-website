@@ -21,7 +21,6 @@ export class AuthService {
   initAuthListener() {
     this.afAuth.authState.subscribe((user: User) => {
       if (user) {
-        console.log(user);
         if (user.emailVerified === true)
           this.store.dispatch(new Auth.SetAuthenticated());
         else {

@@ -1,4 +1,4 @@
-<div class="video-container" (click)="toggle()" [style.backgroundColor]="'black'">
+<div class="video-container" [style.backgroundColor]="'black'">
   <div class="video-inner-container">
     <video
       appOverlay
@@ -9,5 +9,10 @@
       playsinline
       preload="none"
     ></video>
+    <div class="big-play-btn-container" fxLayout fxLayoutAlign="center center" (click)="onClick()" [fxHide]="!displayBigPlayBtn">
+      <div class="icon-container">
+        <mat-icon class="icon">play_arrow</mat-icon>
+      </div>
+    </div>
   </div>
 </div>

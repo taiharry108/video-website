@@ -34,16 +34,13 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
   };
   player: videojs.Player;
 
-  isIn: boolean;
+  displayBigPlayBtn: boolean;
   componentRef: any;
-  toggle(): void {
-    this.isIn = !this.isIn;
-  }
 
   constructor(private store: Store<fromRoot.State>) {}
 
-  ngOnInit() {
-    this.isIn = true;
+  ngOnInit(): void {
+    this.displayBigPlayBtn = true;
     let self = this;
     // instantiate Video.js
     this.player = videojs(
@@ -57,10 +54,15 @@ export class VjsPlayerComponent implements OnInit, OnDestroy {
     );
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     // destroy player
     if (this.player) {
       this.player.dispose();
     }
+  }
+
+  onClick() {
+    this.player.play();
+    if (this.displayBigPlayBtn) this.displayBigPlayBtn = false;
   }
 }
