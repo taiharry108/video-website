@@ -19,12 +19,7 @@ enum DialogRefType {
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
-  // dialogCloseSub: Subscription;
   displayVEmailSub: Subscription;
-  // dialogRef: MatDialogRef<any, any>;
-  // dRefType: DialogRefType;
-
-  // authSub: Subscription;
   constructor(
     private searchService: SearchService,
     private authService: AuthService,
@@ -33,12 +28,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     private authDialogService: AuthDialogService
   ) {}
 
-  // isAuthenticated$: Observable<boolean>;
-
   ngOnInit(): void {
-    // this.dRefType = DialogRefType.None;
-    // this.isAuthenticated$ = this.store.select(fromRoot.getIsAuth);
-
     this.displayVEmailSub = this.store
       .select(fromRoot.getDisplayVEmailSent)
       .subscribe((display) => {
@@ -102,9 +92,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    // this.dialogCloseSub.unsubscribe();
-    // this.authSub.unsubscribe();
-    // this.displayVEmailSub.unsubscribe();
+    this.displayVEmailSub.unsubscribe();
   }
 
   get isAuthenticated(): boolean {

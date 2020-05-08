@@ -6,7 +6,6 @@ import {
   AfterViewInit,
   InjectionToken,
   OnDestroy,
-  ChangeDetectorRef,
 } from '@angular/core';
 import {
   style,

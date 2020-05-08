@@ -13,57 +13,7 @@ import {
 } from '@angular/animations';
 import { UiService } from '../../shared/ui/ui.service';
 import { AuthService } from 'src/app/auth/auth.service';
-
-const fakeShows = [
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-  {
-    name: 'Gintama',
-    numEps: 10,
-    numSeasons: 2,
-    thumImgUrl: 'assets/gintama.jpg',
-  },
-];
+import { AuthDialogService } from 'src/app/auth/auth-dialog.service';
 
 @Component({
   selector: 'app-show-list',
@@ -108,7 +58,8 @@ export class ShowListComponent implements OnInit, OnDestroy {
     private store: Store<fromRoot.State>,
     private router: Router,
     private uiService: UiService,
-    private authService: AuthService
+    private authService: AuthService,
+    private authDialogService: AuthDialogService
   ) {}
 
   ngOnDestroy(): void {
@@ -120,7 +71,7 @@ export class ShowListComponent implements OnInit, OnDestroy {
 
     this.bPObSub = this.uiService.bpObserveLtMd().subscribe((result) => {
       this.isLtMd = result.matches;
-    });    
+    });
   }
 
   showDetails(i: number): void {
@@ -134,6 +85,7 @@ export class ShowListComponent implements OnInit, OnDestroy {
 
   goto(showId: string): void {
     if (this.isAuthenticated) this.router.navigate([`show/${showId}`]);
+    else this.authDialogService.openLoginDialog();
   }
 
   animationDone() {
