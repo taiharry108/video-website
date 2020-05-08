@@ -7,7 +7,7 @@ import {
   Portal,
 } from '@angular/cdk/portal';
 import { CarouselComponent } from './carousel.component';
-import { BreakpointObserver } from '@angular/cdk/layout';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -25,7 +25,8 @@ export class CarouselService {
   getPortal<T1, T2, T3>(
     content: T1[],
     componentType: ComponentType<T2>,
-    type: Type<T3>
+    type: Type<T3>,
+    imgs: string[]
   ): ComponentPortal<CarouselComponent> {
     const portals = content.map((data) => {
       const ref = new type(data);
@@ -37,7 +38,7 @@ export class CarouselService {
       return childPortal;
     });
 
-    const carouselRef = new CarouselRef(portals);
+    const carouselRef = new CarouselRef(portals, imgs);
     const portal = new ComponentPortal(
       CarouselComponent,
       null,

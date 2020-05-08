@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { Show, Season, Ep } from './show.model';
+import { Show, Season, Ep, FeaturedShow } from './show.model';
 
 export const START_LOADING = '[Video] Start Loading';
 export const STOP_LOADING = '[Video] Stop Loading';
@@ -34,7 +34,7 @@ export class SetFilteredShows implements Action {
 
 export class SetFeaturedShows implements Action {
   readonly type = SET_FEATURED_SHOWS;
-  constructor(public payload: Show[]) {}
+  constructor(public payload: FeaturedShow[]) {}
 }
 
 export class SetFetchedSeasons implements Action {

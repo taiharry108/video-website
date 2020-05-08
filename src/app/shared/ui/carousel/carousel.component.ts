@@ -6,6 +6,7 @@ import {
   AfterViewInit,
   InjectionToken,
   OnDestroy,
+  ChangeDetectorRef,
 } from '@angular/core';
 import {
   style,
@@ -17,7 +18,7 @@ import {
 import { CarouselRef } from './carousel-ref';
 import { Portal } from '@angular/cdk/portal';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Subscription } from 'rxjs';
+import { Subscription, Observable } from 'rxjs';
 
 export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
 @Component({
@@ -27,17 +28,14 @@ export const CONTAINER_DATA = new InjectionToken<{}>('CONTAINER_DATA');
 })
 export class CarouselComponent implements OnInit, AfterViewInit, OnDestroy {
   portals: Portal<any>[];
-  imgs: string[] = [
-    'assets/banner/gintama.jpg',
-    'assets/banner/kaguyasama.jpg',
-  ];
+  imgs: string[];
   @ViewChild('carousel') carousel: ElementRef;
 
   private player: AnimationPlayer;
   constructor(
     private animationBuilder: AnimationBuilder,
     private carouselRef: CarouselRef,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
   ) {}
   currentSlide: number;
   isLtMd: boolean;
@@ -45,8 +43,8 @@ export class CarouselComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit(): void {
     this.portals = this.carouselRef.portals;
+    this.imgs = this.carouselRef.imgs;
     this.currentSlide = 0;
-    this.preloadImages();
 
     this.bpObserverSub = this.breakpointObserver
       .observe([Breakpoints.XSmall, Breakpoints.Small])

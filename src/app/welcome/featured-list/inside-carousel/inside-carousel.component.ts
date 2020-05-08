@@ -21,9 +21,9 @@ export class InsideCarouselComponent implements OnInit {
 
   bpObSub: Subscription;
   ngOnInit(): void {
-    this.header = this.insideCarouselRef.data.header;
-    this.subheader = this.insideCarouselRef.data.subheader;
-    this.showId = this.insideCarouselRef.data.showId;
+    this.header = this.insideCarouselRef.featuredShow.header;
+    this.subheader = this.insideCarouselRef.featuredShow.subheader;
+    this.showId = this.insideCarouselRef.featuredShow.showId;
     this.bpObSub = this.uiService
       .bpObserveLtMd()
       .subscribe((result) => {

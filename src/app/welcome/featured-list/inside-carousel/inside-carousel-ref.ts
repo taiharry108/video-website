@@ -1,9 +1,6 @@
-export interface Data {
-  header: string;
-  subheader: string;
-  showId: string;
-}
+import { FeaturedShow } from 'src/app/video-player/show.model';
+
 
 export class InsideCarouselRef {
-  constructor(public data: Data) {}
+  constructor(public featuredShow: FeaturedShow) {}
 }

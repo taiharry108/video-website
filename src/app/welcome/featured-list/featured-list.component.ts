@@ -4,19 +4,18 @@ import {
   OnDestroy,
   TemplateRef,
   AfterViewInit,
-  Injector,
-  ViewChild,
   ChangeDetectorRef,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../../app.reducer';
-import { Subscription, Observable } from 'rxjs';
-import { Show } from '../../video-player/show.model';
-import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+import { Subscription, Subject } from 'rxjs';
+import { Show, FeaturedShow } from '../../video-player/show.model';
+import { ComponentPortal } from '@angular/cdk/portal';
 import { CarouselComponent } from '../../shared/ui/carousel/carousel.component';
 import { CarouselService } from '../../shared/ui/carousel/carousel.service';
 import { InsideCarouselComponent } from './inside-carousel/inside-carousel.component';
-import { InsideCarouselRef, Data } from './inside-carousel/inside-carousel-ref';
+import { InsideCarouselRef } from './inside-carousel/inside-carousel-ref';
+import { ShowService } from 'src/app/show/show.service';
 
 @Component({
   selector: 'app-featured-list',
@@ -26,46 +25,31 @@ import { InsideCarouselRef, Data } from './inside-carousel/inside-carousel-ref';
 export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
   templateArr: TemplateRef<HTMLElement>[];
   featuredShowsSub: Subscription;
-  featuredShows: Show[];
   componentPortal: ComponentPortal<CarouselComponent>;
 
   constructor(
     private store: Store<fromRoot.State>,
     private cdr: ChangeDetectorRef,
     private carouselService: CarouselService,
+    private showService: ShowService
   ) {}
-
-  imgs: string[];
-  content: Data[] = [
-    {
-      header: 'Gintama is coming back in 3 Days!',
-      subheader: 'Available in Japanese | English',
-      showId: '1',
-    },
-    {
-      header: 'New episode of Kaguya-sama is out!',
-      subheader: 'Available in Japanese | English',
-      showId: '2',
-    },
-  ];
-
   ngAfterViewInit() {
-    this.componentPortal = this.carouselService.getPortal<
-      Data,
-      InsideCarouselComponent,
-      InsideCarouselRef
-    >(this.content, InsideCarouselComponent, InsideCarouselRef);
-    this.cdr.detectChanges();
-  }
-
-  ngOnInit(): void {
     this.featuredShowsSub = this.store
       .select(fromRoot.getFeaturedShows)
-      .subscribe((shows: Show[]) => {
-        this.featuredShows = shows;
-        this.imgs = shows.map((show) => show.bannerImgUrl);
+      .subscribe((shows: FeaturedShow[]) => {
+        const imgs = shows.map((show) =>
+          this.showService.getShowBannerImg(show.showId)
+        );
+        this.componentPortal = this.carouselService.getPortal<
+          FeaturedShow,
+          InsideCarouselComponent,
+          InsideCarouselRef
+        >(shows, InsideCarouselComponent, InsideCarouselRef, imgs);
+        this.cdr.detectChanges();
       });
   }
+
+  ngOnInit(): void {}
 
   ngOnDestroy(): void {
     this.featuredShowsSub.unsubscribe();

@@ -13,14 +13,14 @@ import {
   START_PLAYING,
   STOP_PLAYING,
 } from './video.actions';
-import { Show, Season, Ep } from './show.model';
+import { Show, Season, Ep, FeaturedShow } from './show.model';
 
 export interface State {
   isLoading: boolean;
   latestShows: Show[];
   filteredShows: Show[];
   isPlaying: boolean;
-  featuredShows: Show[];
+  featuredShows: FeaturedShow[];
   fetchedSeasons: Season[];
   fetchedEps: Ep[];
   activeShow: Show;

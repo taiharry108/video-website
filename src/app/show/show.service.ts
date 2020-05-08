@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Show, Season, Ep } from '../video-player/show.model';
+import { Show, Season, Ep, FeaturedShow } from '../video-player/show.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as Video from '../video-player/video.actions';
@@ -22,6 +22,17 @@ export class ShowService {
   fetchSeasonSub: Subscription;
   fetchEpSub: Subscription;
   fetchActiveShowSub: Subscription;
+
+  private _showWithBannerImg: Map<string, string>;
+
+  initShowService(): void {
+    this._showWithBannerImg = new Map<string, string>();
+    this.store.select(fromRoot.getLatestShows).subscribe((shows) => {
+      shows
+        .filter((show) => show.bannerImgUrl)
+        .map((show) => (this._showWithBannerImg[show.id] = show.bannerImgUrl));
+    });
+  }
 
   updateShows() {
     let obj = JSON.parse(
@@ -119,7 +130,12 @@ export class ShowService {
   }
 
   fetchFeaturedShow(): void {
-    // this.store.dispatch(new Video.SetFeaturedShows(shows));
+    this.db
+      .collection('featuredShows')
+      .valueChanges()
+      .subscribe((shows: FeaturedShow[]) =>
+        this.store.dispatch(new Video.SetFeaturedShows(shows))
+      );
   }
 
   fetchLatestShow(): void {
@@ -144,5 +160,9 @@ export class ShowService {
         this.store.dispatch(new Video.SetLatestShows(shows));
         this.uiService.stopLoading();
       });
+  }
+
+  getShowBannerImg(showId: string): string {
+    return this._showWithBannerImg[showId];
   }
 }

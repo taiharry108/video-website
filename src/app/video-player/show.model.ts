@@ -1,5 +1,11 @@
 import { Rating } from '../shared/feature/rating/rating.component';
 
+export interface FeaturedShow {
+  showId: string;
+  header: string;
+  subheader: string;
+}
+
 export interface Show {
     lastUpdate: Date;
     name: string;
