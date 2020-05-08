@@ -18,7 +18,10 @@ export class AuthService {
     private uiService: UiService
   ) {}
 
+  private isAuth: boolean
+
   initAuthListener() {
+    this.store.select(fromRoot.getIsAuth).subscribe((isAuth) => this.isAuth = isAuth);
     this.afAuth.authState.subscribe((user: User) => {
       if (user) {
         if (user.emailVerified === true)
@@ -37,7 +40,9 @@ export class AuthService {
   }
 
   logout(): void {
-    this.afAuth.signOut();
+    this.afAuth.signOut().then(() => {
+      this.uiService.showSnackbar("Logged out successfully!", null, 10000);
+    });
   }
 
   login(authData: AuthData): void {
@@ -63,5 +68,9 @@ export class AuthService {
         this.store.dispatch(new UI.StopLoading());
         this.uiService.showSnackbar(error.message, null, 3000);
       });
+  }
+
+  get isAuthenticated(): boolean {
+    return this.isAuth
   }
 }

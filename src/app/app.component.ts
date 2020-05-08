@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
 import { ShowService } from './show/show.service';
+import { AuthDialogService } from './auth/auth-dialog.service';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +12,12 @@ export class AppComponent implements OnInit {
   title = 'video-website';
   constructor(
     private authService: AuthService,
-    private showService: ShowService
+    private showService: ShowService,
+    private authDialogService: AuthDialogService
   ) {}
   ngOnInit(): void {
     this.authService.initAuthListener();
+    this.authDialogService.initAuthListener();
     this.showService.fetchLatestShow();
   }
 }

@@ -1,6 +1,6 @@
 <mat-toolbar class="toolbar" color="primary">
   <div fxHide.gt-xs>
-    <button mat-icon-button (click)="onToggleSidenav()">
+    <button mat-icon-button>
       <mat-icon>menu</mat-icon>
     </button>
   </div>
@@ -9,13 +9,13 @@
   </div>
   <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
     <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-      <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
+      <li [fxHide]="searchBar.searchVisible || isAuthenticated">
         <a (click)="openSignupDialog()">Signup</a>
       </li>
-      <li [fxHide]="searchBar.searchVisible || (isAuthenticated$ | async)">
+      <li [fxHide]="searchBar.searchVisible || (isAuthenticated)">
         <a (click)="openLoginDialog()">Login</a>
       </li>
-      <li [fxHide]="searchBar.searchVisible || !(isAuthenticated$ | async)">
+      <li [fxHide]="searchBar.searchVisible || !(isAuthenticated)">
         <a (click)="signout()">Logout</a>
       </li>
       <li>
