@@ -12,6 +12,7 @@ import {
   animate,
 } from '@angular/animations';
 import { UiService } from '../../shared/ui/ui.service';
+import { AuthService } from 'src/app/auth/auth.service';
 
 const fakeShows = [
   {
@@ -97,39 +98,29 @@ const fakeShows = [
   ],
 })
 export class ShowListComponent implements OnInit, OnDestroy {
-  loadingSub: Subscription;
-  isAuthSub: Subscription;
-  isLoading: boolean;
   shows$: Observable<Show[]>;
   displayIdx: number;
   isLtMd: boolean;
-  isAuthenticated: boolean;
 
   bPObSub: Subscription;
 
   constructor(
     private store: Store<fromRoot.State>,
     private router: Router,
-    private uiServie: UiService
+    private uiService: UiService,
+    private authService: AuthService
   ) {}
 
   ngOnDestroy(): void {
-    this.loadingSub.unsubscribe();
     this.bPObSub.unsubscribe();
-    this.isAuthSub.unsubscribe();
   }
 
   ngOnInit(): void {
     this.shows$ = this.store.select(fromRoot.getLatestShows);
-    this.isLoading = true;
-    this.loadingSub = this.store
-      .select(fromRoot.getIsLoading)
-      .subscribe((isLoading) => (this.isLoading = isLoading));
 
-    this.bPObSub = this.uiServie.bpObserveLtMd().subscribe((result) => {
+    this.bPObSub = this.uiService.bpObserveLtMd().subscribe((result) => {
       this.isLtMd = result.matches;
-    });
-    this.isAuthSub = this.store.select(fromRoot.getIsAuth).subscribe(isAuth => this.isAuthenticated = isAuth);
+    });    
   }
 
   showDetails(i: number): void {
@@ -142,8 +133,7 @@ export class ShowListComponent implements OnInit, OnDestroy {
   }
 
   goto(showId: string): void {
-    if (this.isAuthenticated)
-      this.router.navigate([`show/${showId}`]);    
+    if (this.isAuthenticated) this.router.navigate([`show/${showId}`]);
   }
 
   animationDone() {
@@ -158,5 +148,13 @@ export class ShowListComponent implements OnInit, OnDestroy {
       'background-size': '100%',
     };
     return style;
+  }
+
+  get isAuthenticated(): boolean {
+    return this.authService.isAuthenticated;
+  }
+
+  get isLoading(): boolean {
+    return this.uiService.isLoading;
   }
 }

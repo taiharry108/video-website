@@ -3,11 +3,11 @@ import { Show, Season, Ep } from '../video-player/show.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
 import * as Video from '../video-player/video.actions';
-import * as UI from '../shared/ui/ui.actions';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { map } from 'rxjs/operators';
 import { mockShows } from './mock-show';
 import { Subscription } from 'rxjs';
+import { UiService } from '../shared/ui/ui.service';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,8 @@ import { Subscription } from 'rxjs';
 export class ShowService {
   constructor(
     private store: Store<fromRoot.State>,
-    private db: AngularFirestore
+    private db: AngularFirestore,
+    private uiService: UiService
   ) {}
 
   fetchSeasonSub: Subscription;
@@ -122,7 +123,7 @@ export class ShowService {
   }
 
   fetchLatestShow(): void {
-    this.store.dispatch(new UI.StartLoading());
+    this.uiService.startLoading();
     this.db
       .collection('shows')
       .snapshotChanges()
@@ -141,7 +142,7 @@ export class ShowService {
       )
       .subscribe((shows: Show[]) => {
         this.store.dispatch(new Video.SetLatestShows(shows));
-        this.store.dispatch(new UI.StopLoading());
+        this.uiService.stopLoading();
       });
   }
 }

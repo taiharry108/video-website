@@ -1,8 +1,7 @@
-import { Injectable, Type } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { AuthData } from './auth-data.model';
 import { Store } from '@ngrx/store';
 import * as fromRoot from '../app.reducer';
-import * as UI from '../shared/ui/ui.actions';
 import { AngularFireAuth } from '@angular/fire/auth';
 import * as Auth from './auth.actions';
 import { UiService } from '../shared/ui/ui.service';
@@ -46,26 +45,26 @@ export class AuthService {
   }
 
   login(authData: AuthData): void {
-    this.store.dispatch(new UI.StartLoading());
+    this.uiService.startLoading();
     this.afAuth
       .signInWithEmailAndPassword(authData.email, authData.password)
       .then((result) => {
-        this.store.dispatch(new UI.StopLoading());
+        this.uiService.stopLoading();
       })
       .catch((error) => {
-        this.store.dispatch(new UI.StopLoading());
+        this.uiService.stopLoading();
         this.uiService.showSnackbar(error.message, null, 3000);
       });
   }
 
   registerUser(authData: AuthData): void {
-    this.store.dispatch(new UI.StartLoading());
+    this.uiService.startLoading();
 
     this.afAuth
       .createUserWithEmailAndPassword(authData.email, authData.password)
-      .then((result) => this.store.dispatch(new UI.StopLoading()))
+      .then((result) => this.uiService.stopLoading())
       .catch((error) => {
-        this.store.dispatch(new UI.StopLoading());
+        this.uiService.stopLoading();;
         this.uiService.showSnackbar(error.message, null, 3000);
       });
   }
