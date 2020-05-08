@@ -13,14 +13,12 @@ import { Observable } from 'rxjs';
 export class SignupComponent implements OnInit {
   signupForm: FormGroup;
   isLoading$: Observable<boolean>;
-  displayVEmailSent$: Observable<boolean>;
   constructor(
     private authService: AuthService,
     private store: Store<fromRoot.State>
   ) {}
 
   ngOnInit(): void {
-    this.displayVEmailSent$ = this.store.select(fromRoot.getDisplayVEmailSent);
     this.isLoading$ = this.store.select(fromRoot.getIsLoading);
     this.signupForm = new FormGroup({
       email: new FormControl('', {

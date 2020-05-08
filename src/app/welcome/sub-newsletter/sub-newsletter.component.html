@@ -6,6 +6,7 @@
       fxLayout="column"
       fxLayoutAlign="start center"
       [formGroup]="subscribeForm"
+      (ngSubmit)="onSubmit()"
     >
       <h1>Stay in touch</h1>
       <h2>
@@ -30,6 +31,7 @@
           Tower Bridge to send you email communications.</span
         ></mat-checkbox
       >
+      <button [disabled]="subscribeForm.invalid" mat-flat-button type="submit">Submit</button>
     </form>
   </section>
 </div>

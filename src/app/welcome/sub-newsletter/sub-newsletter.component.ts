@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { UiService } from 'src/app/shared/ui/ui.service';
 
 @Component({
   selector: 'app-sub-newsletter',
@@ -9,7 +10,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class SubNewsletterComponent implements OnInit {
   subscribeForm: FormGroup;
 
-  constructor() {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit(): void {
     this.subscribeForm = new FormGroup({
@@ -20,5 +21,9 @@ export class SubNewsletterComponent implements OnInit {
         validators: [Validators.requiredTrue],
       }),
     });
+  }
+
+  onSubmit(): void {
+    this.uiService.showSnackbar("Thanks for subscribing. A verification email is sent to you.", null, 3000);
   }
 }

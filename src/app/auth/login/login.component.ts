@@ -13,16 +13,13 @@ import { UiService } from 'src/app/shared/ui/ui.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  displayVEmailSent$: Observable<boolean>;
 
   constructor(
     private authService: AuthService,
-    private store: Store<fromRoot.State>,
     private uiService: UiService
   ) {}
 
   ngOnInit(): void {
-    this.displayVEmailSent$ = this.store.select(fromRoot.getDisplayVEmailSent);
     this.loginForm = new FormGroup({
       email: new FormControl('', {
         validators: [Validators.required, Validators.email],
