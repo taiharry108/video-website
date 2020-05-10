@@ -45,7 +45,7 @@ export class FeaturedListComponent implements OnInit, OnDestroy, AfterViewInit {
           InsideCarouselComponent,
           InsideCarouselRef
         >(shows, InsideCarouselComponent, InsideCarouselRef, imgs);
-        // this.cdr.detectChanges();
+        this.cdr.detectChanges();
       });
   }
 
