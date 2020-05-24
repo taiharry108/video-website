@@ -8,6 +8,28 @@ import { map } from 'rxjs/operators';
 import { mockShows } from './mock-show';
 import { Subscription } from 'rxjs';
 import { UiService } from '../shared/ui/ui.service';
+import { HttpClient } from '@angular/common/http';
+
+const snakeCaseToCamelCase = input =>
+  input
+    .split("_")
+    .reduce(
+      (res, word, i) =>
+        i === 0
+          ? word.toLowerCase()
+          : `${res}${word.charAt(0).toUpperCase()}${word
+            .substr(1)
+            .toLowerCase()}`,
+      ""
+    );
+
+const convertObjectKeyToCamel = o => {
+  let result = {};
+  Object.keys(o).map(key => {
+    result[snakeCaseToCamelCase(key)] = o[key];
+  });
+  return result;
+}
 
 @Injectable({
   providedIn: 'root',
@@ -16,8 +38,9 @@ export class ShowService {
   constructor(
     private store: Store<fromRoot.State>,
     private db: AngularFirestore,
-    private uiService: UiService
-  ) {}
+    private uiService: UiService,
+    private http: HttpClient,
+  ) { }
 
   fetchSeasonSub: Subscription;
   fetchEpSub: Subscription;
@@ -30,7 +53,9 @@ export class ShowService {
     this.store.select(fromRoot.getLatestShows).subscribe((shows) => {
       shows
         .filter((show) => show.bannerImgUrl)
-        .map((show) => (this._showWithBannerImg[show.id] = show.bannerImgUrl));
+        .map((show) => {
+          this._showWithBannerImg[show.id] = show.bannerImgUrl
+        });
     });
   }
 
@@ -43,6 +68,7 @@ export class ShowService {
     });
 
     // shows.map((show) => this.db.collection('shows').add(show));
+
   }
 
   addShowsToDB() {
@@ -129,37 +155,53 @@ export class ShowService {
       });
   }
 
+
+
   fetchFeaturedShow(): void {
-    this.db
-      .collection('featuredShows')
-      .valueChanges()
-      .subscribe((shows: FeaturedShow[]) =>
-        this.store.dispatch(new Video.SetFeaturedShows(shows))
-      );
+    this.http.get("/api/show/featuredShows").subscribe((result: Object[]) => {
+      const shows: FeaturedShow[] = result.map(show => {
+        let convertedShow = convertObjectKeyToCamel(show);
+        convertedShow['showId'] = convertedShow['show'];
+        return convertedShow;
+      }) as FeaturedShow[];
+      this.store.dispatch(new Video.SetFeaturedShows(shows));
+    });
+    // this.db
+    //   .collection('featuredShows')
+    //   .valueChanges()
+    //   .subscribe((shows: FeaturedShow[]) =>
+    //     this.store.dispatch(new Video.SetFeaturedShows(shows))
+    //   );
   }
 
   fetchLatestShow(): void {
     this.uiService.startLoading();
-    this.db
-      .collection('shows')
-      .snapshotChanges()
-      .pipe(
-        map((docArray) =>
-          docArray.map((doc) => {
-            let tmpShow = {
-              id: doc.payload.doc.id as string,
-              lastUpdate: null,
-              ...(doc.payload.doc.data() as object),
-            };
-            tmpShow.lastUpdate = tmpShow.lastUpdate.toDate();
-            return tmpShow;
-          })
-        )
-      )
-      .subscribe((shows: Show[]) => {
-        this.store.dispatch(new Video.SetLatestShows(shows));
-        this.uiService.stopLoading();
-      });
+    this.http.get("/api/show/shows").subscribe((result: Object[]) => {
+      const shows: Show[] = result.map(show => convertObjectKeyToCamel(show)) as Show[];
+      this.store.dispatch(new Video.SetLatestShows(shows));
+      this.uiService.stopLoading();
+    });
+
+    // this.db
+    //   .collection('shows')
+    //   .snapshotChanges()
+    //   .pipe(
+    //     map((docArray) =>
+    //       docArray.map((doc) => {
+    //         let tmpShow = {
+    //           id: doc.payload.doc.id as string,
+    //           lastUpdate: null,
+    //           ...(doc.payload.doc.data() as object),
+    //         };
+    //         tmpShow.lastUpdate = tmpShow.lastUpdate.toDate();
+    //         return tmpShow;
+    //       })
+    //     )
+    //   )
+    //   .subscribe((shows: Show[]) => {
+    //     this.store.dispatch(new Video.SetLatestShows(shows));
+    //     this.uiService.stopLoading();
+    //   });
   }
 
   getShowBannerImg(showId: string): string {

@@ -1,11 +1,4 @@
-import { Component, OnInit, OnDestroy, TemplateRef } from '@angular/core';
-import { Store } from '@ngrx/store';
-import * as fromRoot from '../app.reducer';
-import { Subscription, Observable } from 'rxjs';
-import { Show } from '../video-player/show.model';
-import * as Video from '../video-player/video.actions';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 import { ShowService } from '../show/show.service';
 
 

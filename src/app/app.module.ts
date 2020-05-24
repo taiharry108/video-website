@@ -19,6 +19,7 @@ import { SearchService } from './shared/feature/search/search.service';
 import { CarouselService } from './shared/ui/carousel/carousel.service';
 import { AuthService } from './auth/auth.service';
 import { AuthDialogService } from './auth/auth-dialog.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -34,6 +35,7 @@ import { AuthDialogService } from './auth/auth-dialog.service';
     AuthModule,
     SharedModule,
     WelcomeModule,
+    HttpClientModule
   ],
   providers: [SearchService, CarouselService, AuthService, AuthDialogService],
   bootstrap: [AppComponent],
