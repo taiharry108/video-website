@@ -11,6 +11,5 @@ export class WelcomeComponent implements OnInit {
   constructor(private showService: ShowService) {}
 
   ngOnInit(): void {    
-    this.showService.updateShows();
   }
 }
